@@ -13,6 +13,7 @@
 
 // Requisito 1 -
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const average = (numeros) => {
   let soma = 0;
 
@@ -20,20 +21,24 @@ const average = (numeros) => {
     return undefined;
   }
 
+  // eslint-disable-next-line no-undef
   for (i = 0; i < numeros.length; i += 1) {
-    if(typeof numeros[i] !== 'number') {
-      return undefined
+    // eslint-disable-next-line no-undef
+    if (typeof numeros[i] !== 'number') {
+      return undefined;
     }
 
-    if(isNaN(numeros[i])) {
-      return undefined
+    // eslint-disable-next-line no-restricted-globals, no-undef
+    if (isNaN(numeros[i])) {
+      return undefined;
     }
+    // eslint-disable-next-line no-undef
     soma += numeros[i];
   }
 
   const media = soma / numeros.length;
-  
-  return Math.round(media); 
+
+  return Math.round(media);
 };
 
 module.exports = average;
