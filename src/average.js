@@ -13,27 +13,32 @@
 
 // Requisito 1 -
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
-const average = (numeros) => {
-  let soma = 0;
+function isNumero(numero) {
+  if (typeof numero !== 'number') {
+    return false;
+  }
 
+  if (Number.isNaN(numero)) {
+    return false;
+  }
+  return true;
+}
+
+const average = (numeros) => {
   if (numeros.length === 0) {
     return undefined;
   }
 
-  // eslint-disable-next-line no-undef
-  for (i = 0; i < numeros.length; i += 1) {
-    // eslint-disable-next-line no-undef
-    if (typeof numeros[i] !== 'number') {
+  let soma = 0;
+
+  for (let i = 0; i < numeros.length; i += 1) {
+    const numero = numeros[i];
+
+    if (!isNumero(numero)) {
       return undefined;
     }
 
-    // eslint-disable-next-line no-restricted-globals, no-undef
-    if (isNaN(numeros[i])) {
-      return undefined;
-    }
-    // eslint-disable-next-line no-undef
-    soma += numeros[i];
+    soma += numero;
   }
 
   const media = soma / numeros.length;
