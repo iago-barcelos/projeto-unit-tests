@@ -30,14 +30,39 @@ const productDetails = require('../src/productDetails');
 */
 
 describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
-  it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    fail('Teste vazio!');
-    // ESCREVA SEUS TESTES ABAIXO:
     // Teste se productDetails é uma função.
+    it ('Teste se productDetails é uma função', () => {
+      expect (typeof productDetails).toBe('function')
+    })
     // Teste se o retorno da função é um array.
+    it ('Teste se o retorno da função é um array', () => {
+      expect (productDetails ('Cotonete','Garrafa')).toHaveLength(2)
+    })
     // Teste se o array retornado pela função contém dois itens dentro.
+    it ('Teste se o array retornado pela função contém dois itens dentro', () => {
+      expect (productDetails ('Cotonete','Garrafa')).toHaveLength(2)
+    })
     // Teste se os dois itens dentro do array retornado pela função são objetos.
+    it ('Teste se os dois itens dentro do array retornado pela função são objetos', () => {
+      expect (productDetails ('Cotonete','Garrafa')).toHaveProperty(productDetails.name, productDetails.details)
+    })
     // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
+    it ('Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.', () => {
+      const parametro1 = ['Alcool gel', 'Sabonete'];
+      const parametro2 = ['Shampoo', 'Cotonete'];
+
+      const compara1 = productDetails(parametro1);
+      const compara2 = productDetails(parametro2);
+
+      expect(compara1[0]).not.toBe(compara2[0]);
+      expect(compara2[1]).not.toBe(compara1[1]);
+    })
     // Teste se os dois productIds terminam com 123.
-  });
+    it ('Teste se os dois productIds terminam com 123', () =>{
+      const parametros = ['shampoo','cotonete'];
+
+      const resultado = productDetails(parametros);
+      
+      expect(resultado[0].details.productId).toMatch(/123$/)
+    })
 });
